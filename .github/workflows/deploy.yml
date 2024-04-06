@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      -main
+      - main
 
 jobs:
   deploy:
@@ -22,4 +22,6 @@ jobs:
           ssh-host: ${{ secrets.HOSTINGER_REMOTE_SERVER }}
 
       - name: Deploy
+        env: 
+          HOSTINGER_REMOTE_SERVER_IP: ${{ secrets.HOSTINGER_REMOTE_SERVER_IP }}
         run: make deploy
