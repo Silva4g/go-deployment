@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      -main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with: 
+          go-version: '1.22.1'
+## isso aqui ta estranho, mas como eu so copiei e colei do video eu mudo dps
+      - name: Setup Keys
+        uses: kielabokkie/ssh-key-and-known-hosts-actions@v1
+        with:
+          ssh-private-key: ${{ secrets.HOSTINGER_GITHUB_SSH_KEY }}
+          ssh-host: ${{ secrets.HOSTINGER_REMOTE_SERVER }}
+
+      - name: Deploy
+        run: make deploy
