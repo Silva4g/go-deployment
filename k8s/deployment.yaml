@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
         - name: go-app
-          image: silva4g/go-deployment:v1
+          image: silva4g/go-deployment
           ports:
             - containerPort: 8080
