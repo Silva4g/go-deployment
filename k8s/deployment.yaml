@@ -5,6 +5,7 @@ metadata:
   namespace: go-app
   labels:
     app: go
+    name: go-app
 spec:
   replicas: 2
   selector:
